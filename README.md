@@ -42,7 +42,10 @@ sudo nmap -sS 127.0.0.1/8
 | Description                  | File                  |
 |------------------------------|------------------------|
 | 🔍 Nmap Scan Result          |![linux nmap](https://github.com/user-attachments/assets/f2e324d0-04e6-4243-baf2-da543ebf87ea)|
-| 🌐 IP Configuration          | ![ip linux](https://github.com/user-attachments/assets/189628f1-0a31-4f27-a002-dd248a479512)         |
+| 🌐 IP Configuration          | ![ip linux](https://github.com/user-attachments/assets/189628f1-0a31-4f27-a002-dd248a479512)  |
+
+
+
 ---
 
 ## 📊 Scan Output Summary
