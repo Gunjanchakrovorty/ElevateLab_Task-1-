@@ -1,74 +1,80 @@
-🔍 Task 1 – Network Port Scanning with Nmap
 
-📌 Objective
-Perform a TCP SYN Scan on the local network to discover open ports and running services, enhancing your understanding of network exposure and basic reconnaissance techniques.
+# 🔍 Task 1 – Network Port Scanning with Nmap
 
-🛠️ Tools Used
-Nmap – for scanning the network and discovering open ports.
+![nmap](https://img.shields.io/badge/Nmap-TCP_SYN_Scan-blue) ![Wireshark](https://img.shields.io/badge/Wireshark-Optional_Analysis-informational) ![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
 
-Wireshark (optional) – for analyzing network traffic.
+## 🧠 Task Overview
 
-Ubuntu 22.04 (VirtualBox VM)
+This task was part of the **12th Gurugram Police Cyber Security Internship 2025**, focused on gaining hands-on experience in **network reconnaissance** by scanning for open ports using `Nmap`.
 
-🧪 What I Did
-Installed Nmap:
+---
 
-bash
-Copy
-Edit
+## 🛠️ Tools Used
+
+| Tool       | Purpose                               |
+|------------|----------------------------------------|
+| Nmap       | Port scanning and reconnaissance       |
+| Wireshark  | (Optional) Traffic packet analysis     |
+| Ubuntu     | Linux-based environment (VM)           |
+| Terminal   | Executing commands and scans           |
+
+---
+
+## 🔍 Commands Used
+
+```bash
+# Install Nmap
 sudo apt install nmap
-Identified Local IP Addresses & Interfaces:
 
-bash
-Copy
-Edit
+# Check network interfaces
 ip a | grep inet
-Found IPs like 127.0.0.1, 10.0.2.15, 192.168.0.116.
 
-Scanned the Loopback Range:
-
-bash
-Copy
-Edit
+# TCP SYN Scan on loopback
 sudo nmap -sS 127.0.0.1/8
-Discovered port 631 (IPP service) open on 127.0.0.1.
+```
 
-Saved Results:
+📝 **Note**: Use `/24` for scanning all devices in a subnet, e.g. `192.168.0.0/24`
 
-Screenshots captured (see repo).
+---
 
-Network traffic recorded in .pcapng format using Wireshark.
+## 📸 Screenshots & Output
 
-📸 Evidence
-Description	Screenshot
-🔢 Nmap Scan on 127.0.0.1/8	
-![linux nmap](https://github.com/user-attachments/assets/e2ffce66-4c98-4a70-8637-b391291132fb)
+| Description                  | File                  |
+|------------------------------|------------------------|
+| 🔍 Nmap Scan Result          |![linux nmap](https://github.com/user-attachments/assets/f2e324d0-04e6-4243-baf2-da543ebf87ea)|
+| 🌐 IP Configuration          | ![ip linux](https://github.com/user-attachments/assets/189628f1-0a31-4f27-a002-dd248a479512)         |
+---
 
-🌐 IP Address Info	
-![ip linux](https://github.com/user-attachments/assets/c3d80232-06e0-46fd-a72b-c0fe686e4711)
+## 📊 Scan Output Summary
 
-📦 Packet Capture	nmap_scan_capture.pcapng
+- **Target Range Scanned**: `127.0.0.1/8`
+- **Discovered Open Ports**:
+  - `631/tcp` – Internet Printing Protocol (IPP)
+- **TCP SYN Scan**:
+  - Quick and stealthy
+  - Doesn’t complete full TCP handshake
 
-🧠 Key Concepts
-TCP SYN Scan (-sS): Stealth scan that sends SYN packets and detects open ports without completing the handshake.
+---
 
-IP Range Discovery: Helps identify all devices in the subnet.
+## 🔐 Security Insights
 
-Service Enumeration: Port 631 (IPP) was detected, commonly used by printer services.
+- **Port 631 (IPP)**: Commonly used for printing services, can be vulnerable if exposed externally.
+- **Open Ports = Attack Surface**: Every open port can be a way in for malicious users.
 
-Security Insight: Each open port is a potential entry point. Minimizing open ports = minimizing attack surface.
+---
 
-⚠️ Risks of Open Ports
-Open ports can allow unauthorized access, especially if the service has vulnerabilities.
+## 🎓 Learning Takeaways
 
-Port scanning is a common technique used by attackers to identify exploitable services.
+- How to **install and use Nmap**
+- Understand **IP ranges and subnets**
+- Perform and interpret a **TCP SYN scan**
+- Use **Wireshark** to inspect traffic
+- Understand **real-world risk** from open ports
 
-Example: Port 631, if exposed, could allow attackers to interfere with printing services.
+---
 
-🔐 Securing Open Ports
-Use a firewall to block unnecessary ports.
+## 📚 Useful Resources
 
-Disable services that aren't required.
-
-Regularly audit your network for unexpected open ports.
-
+- [Nmap Official Guide](https://nmap.org/book/man.html)
+- [Wireshark Basics](https://www.wireshark.org/docs/wsug_html_chunked/)
+- [Common TCP Ports](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers)
